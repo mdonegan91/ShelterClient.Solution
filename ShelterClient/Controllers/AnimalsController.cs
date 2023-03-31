@@ -8,29 +8,29 @@ public class AnimalsController : Controller
 {
   public async Task<IActionResult> Index(int page = 1, int pageSize = 6)
   {
-    Animal destination = new Animal();
-    List<Animal> destList = new List<Animal> { };
+    Animal animal = new Animal();
+    List<Animal> animalList = new List<Animal> { };
     using (var httpClient = new HttpClient())
     {
-      using (var response = await httpClient.GetAsync($"https://localhost:5001/api/Animals?page={page}&pagesize={pageSize}"))
+      using (var response = await httpClient.GetAsync($"https://localhost:5001/api/Animals?page={page}"))
       {
-        var destContent = await response.Content.ReadAsStringAsync();
-        JArray destArray = JArray.Parse(destContent);
-        destList = destArray.ToObject<List<Animal>>();
+        var animalContent = await response.Content.ReadAsStringAsync();
+        JArray animalArray = JArray.Parse(animalContent);
+        animalList = animalArray.ToObject<List<Animal>>();
       }
     }
 
-    ViewBag.TotalPages = destList.Count();
+    ViewBag.TotalPages = animalList.Count();
     ViewBag.CurrentPage = page;
     ViewBag.PageSize = pageSize;
 
-    return View(destList);
+    return View(animalList);
   }
 
   public IActionResult Details(int id)
   {
-    Animal destination = Animal.GetDetails(id);
-    return View(destination);
+    Animal animal = Animal.GetDetails(id);
+    return View(animal);
   }
 
   public ActionResult Create()
@@ -39,29 +39,29 @@ public class AnimalsController : Controller
   }
 
   [HttpPost]
-  public ActionResult Create(Animal destination)
+  public ActionResult Create(Animal animal)
   {
-    Animal.Post(destination);
+    Animal.Post(animal);
     return RedirectToAction("Index");
   }
 
   public ActionResult Edit(int id)
   {
-    Animal destination = Animal.GetDetails(id);
-    return View(destination);
+    Animal animal = Animal.GetDetails(id);
+    return View(animal);
   }
 
   [HttpPost]
-  public ActionResult Edit(Animal destination)
+  public ActionResult Edit(Animal animal)
   {
-    Animal.Put(destination);
-    return RedirectToAction("Details", new { id = destination.AnimalId });
+    Animal.Put(animal);
+    return RedirectToAction("Details", new { id = animal.AnimalId });
   }
 
   public ActionResult Delete(int id)
   {
-    Animal destination = Animal.GetDetails(id);
-    return View(destination);
+    Animal animal = Animal.GetDetails(id);
+    return View(animal);
   }
 
   [HttpPost, ActionName("Delete")]

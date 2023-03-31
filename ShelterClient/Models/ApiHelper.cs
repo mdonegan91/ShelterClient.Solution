@@ -7,7 +7,7 @@ namespace ShelterClient.Models
     public static async Task<string> GetAll()
     {
       RestClient client = new RestClient("https://localhost:5001/");
-      RestRequest request = new RestRequest($"api/Destinations", Method.Get);
+      RestRequest request = new RestRequest($"api/Animals", Method.Get);
       RestResponse response = await client.GetAsync(request);
       return response.Content;
     }
@@ -15,33 +15,33 @@ namespace ShelterClient.Models
     public static async Task<string> Get(int id)
     {
       RestClient client = new RestClient("https://localhost:5001/");
-      RestRequest request = new RestRequest($"api/Destinations/{id}", Method.Get);
+      RestRequest request = new RestRequest($"api/Animals/{id}", Method.Get);
       RestResponse response = await client.GetAsync(request);
       return response.Content;
     }
 
-    public static async void Post(string newDestination)
+    public static async void Post(string newAnimal)
     {
       RestClient client = new RestClient("https://localhost:5001/");
-      RestRequest request = new RestRequest($"api/Destinations", Method.Post);
+      RestRequest request = new RestRequest($"api/Animals", Method.Post);
       request.AddHeader("Content-Type", "application/json");
-      request.AddJsonBody(newDestination);
+      request.AddJsonBody(newAnimal);
       await client.PostAsync(request);
     }
 
-    public static async void Put(int id, string newDestination)
+    public static async void Put(int id, string newAnimal)
     {
       RestClient client = new RestClient("https://localhost:5001/");
-      RestRequest request = new RestRequest($"api/Destinations/{id}", Method.Put);
+      RestRequest request = new RestRequest($"api/Animals/{id}", Method.Put);
       request.AddHeader("Content-Type", "application/json");
-      request.AddJsonBody(newDestination);
+      request.AddJsonBody(newAnimal);
       await client.PutAsync(request);
     }
     
     public static async void Delete(int id)
     {
       RestClient client = new RestClient("https://localhost:5001/");
-      RestRequest request = new RestRequest($"api/Destinations/{id}", Method.Delete);
+      RestRequest request = new RestRequest($"api/Animals/{id}", Method.Delete);
       request.AddHeader("Content-Type", "application/json");
       await client.DeleteAsync(request);
     }
