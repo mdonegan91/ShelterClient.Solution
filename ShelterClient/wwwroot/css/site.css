@@ -16,3 +16,40 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+a {
+  color: #cc00a0;
+}
+
+a:hover {
+  color: #b75ba3;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #cc00a0;
+  border-color: #cc00a0;
+  margin: 5px;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #b75ba3;
+  border-color: #b75ba3;
+  margin: 5px;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #cc00a0;
+  border-color: #b75ba3;
+}
+
+.pagination li.page-item.active a.btn-primary {
+  background-color: #b75ba3;
+  border-color: #b75ba3;
+}
+.pagination li.page-item:not(.active) a.btn-primary {
+  background-color: #cc00a0;
+  border-color: #b75ba3;
+}

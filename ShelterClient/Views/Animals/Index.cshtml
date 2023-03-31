@@ -29,17 +29,17 @@ List<Animal> animals = Model.GetRange(startIndex, endIndex - startIndex);
         <ul class="pagination">
             @if (currentPage > 1)
             {
-                <a href="/Animals?page=@(currentPage - 1)&pageSize=@pageSize"><button class="page-link">Prev</button></a>
+                <a href="/Animals?page=@(currentPage - 1)&pageSize=@pageSize"><button class="btn btn-primary">Prev</button></a>
             }
             @for (int i = 1; i <= Math.Ceiling((double)Model.Count / ViewBag.pageSize); i++)
             {
                 <li class="page-item @(currentPage == i ? "active" : "")">
-                    <a class="page-link" href="/Animals?page=@i&pageSize=@pageSize">@i</a>
+                    <a class="btn btn-primary" href="/Animals?page=@i&pageSize=@pageSize">@i</a>
                 </li>
             }
             @if (currentPage < Math.Ceiling((double)Model.Count / pageSize))
             {
-                <a href="/Animals?page=@(currentPage + 1)&pageSize=@pageSize"><button class="page-link">Next</button></a>
+                <a href="/Animals?page=@(currentPage + 1)&pageSize=@pageSize"><button class="btn btn-primary">Next</button></a>
             }
         </ul>
     </div>
