@@ -10,6 +10,7 @@ namespace ShelterClient.Models
     public string Species { get; set; }
     public string Breed { get; set; }
     public int Age { get; set; }
+    public IFormFile Image { get; set; }
 
     public static Animal[] GetAnimals()
     {
