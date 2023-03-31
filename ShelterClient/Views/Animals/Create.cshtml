@@ -1,0 +1,27 @@
+@{
+  ViewData["Title"] = "Animal Intake";
+}
+
+@model ShelterClient.Models.Animal
+
+<h4>Add a new animal to the shelter</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Name)
+  @Html.TextBoxFor(model => model.Name)
+  <br>
+  @Html.LabelFor(model => model.Species)
+  @Html.TextBoxFor(model => model.Species)
+  <br>
+  @Html.LabelFor(model => model.Breed)
+  @Html.TextBoxFor(model => model.Breed)
+  <br>
+  @Html.LabelFor(model => model.Age)
+  @Html.TextBoxFor(model => model.Age)
+  <br>
+  <input type="submit" value="Add new  animal" class="btn btn-dark"/>
+}
+
+<br>
+<p>@Html.ActionLink("Back to all animals", "Index")</p>
